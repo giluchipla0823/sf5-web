@@ -1,0 +1,98 @@
+App\Entity\Book:
+    type: entity
+    table: books
+    indexes:
+        books_author_id_foreign:
+            columns:
+                - author_id
+        books_publisher_id_foreign:
+            columns:
+                - publisher_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: false
+            length: 200
+            options:
+                fixed: false
+        summary:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        quantity:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+        price:
+            type: decimal
+            nullable: false
+            precision: 8
+            scale: 2
+        image:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                default: 1.jpg
+        active:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+        createdAt:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: updated_at
+        deletedAt:
+            type: datetime
+            nullable: true
+            column: deleted_at
+    manyToOne:
+        author:
+            targetEntity: Author
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                author_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        publisher:
+            targetEntity: Publisher
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                publisher_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

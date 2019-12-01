@@ -1,0 +1,41 @@
+App\Entity\BookGenre:
+    type: entity
+    table: books_genres
+    indexes:
+        books_genres_book_id_foreign:
+            columns:
+                - book_id
+        books_genres_genre_id_foreign:
+            columns:
+                - genre_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        book:
+            targetEntity: Book
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                book_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        genre:
+            targetEntity: Genre
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                genre_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
