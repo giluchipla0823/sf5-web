@@ -1,8 +1,8 @@
 # Crear mapa de entidades YML
-php bin/console doctrine:mapping:import "App\Entity" yml --path=src/Resources/doctrine
+php bin/console doctrine:mapping:import "App\Entity" yml --path=[PATH]
 
 # Crear entidades
-php bin/console make:entity --regenerate App
+php bin/console make:entity --regenerate [MAPPING]
 
 # Crear CRUD en base a un model
 php bin/console make:crud [ENTITY_NAME]
