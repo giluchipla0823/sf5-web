@@ -31,3 +31,26 @@ Ejemplo:
 ```
 $ php bin/console make:crud Book
 ```
+
+## Configurar validaciones en YAML
+Hay muchas formas de crear validaciones para campos
+de formularios. Sin embargo, la manera más limpia, según 
+mi criterio, es tener separado esta configuración en un fichero
+YAML.
+
+Para ello, crearemos el siguiente fichero:
+
+```
+src/Resources/config/validators/author-validation.yml
+```
+
+y agregaremos lo siguiente:
+
+``` yaml
+App\Entity\Author:
+  properties:
+    name:
+      - NotBlank: {}
+      - Length:
+          min: 2
+```
