@@ -1,0 +1,12 @@
+.main-container{
+    margin-top: 60px;
+}
+
+.display-inline{
+    display: inline;
+}
+
+.display-inline form.form-delete-action {
+    display: inline;
+}
+

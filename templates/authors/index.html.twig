@@ -1,19 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Author index{% endblock %}
+{% block title %}Author Page{% endblock %}
 
 {% block body %}
-    <h1>Author index</h1>
+    <h1>Authors</h1>
+    <hr />
 
-    <table class="table">
+    <div class="form-group">
+        <a class="btn btn-success" href="{{ path('author_new') }}">
+            <i class="fa fa-plus"></i> Create new
+        </a>
+    </div>
+
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Active</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>DeletedAt</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,12 +27,13 @@
                 <td>{{ author.id }}</td>
                 <td>{{ author.name }}</td>
                 <td>{{ author.active ? 'Yes' : 'No' }}</td>
-                <td>{{ author.createdAt ? author.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ author.updatedAt ? author.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ author.deletedAt ? author.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('author_show', {'id': author.id}) }}">show</a>
-                    <a href="{{ path('author_edit', {'id': author.id}) }}">edit</a>
+                    <a href="{{ path('author_show', {'id': author.id}) }}">
+                        <i class="fa fa-eye"></i>
+                    </a>
+                    <a href="{{ path('author_edit', {'id': author.id}) }}">
+                        <i class="fa fa-pencil"></i>
+                    </a>
                 </td>
             </tr>
         {% else %}
@@ -38,6 +43,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('author_new') }}">Create new</a>
 {% endblock %}

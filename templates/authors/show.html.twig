@@ -4,6 +4,17 @@
 
 {% block body %}
     <h1>Author</h1>
+    <hr />
+
+    <div class="form-group">
+        <a class="btn btn-primary" href="{{ path('author_edit', {'id': author.id}) }}">
+            <i class="fa fa-pencil"></i> Edit
+        </a>
+
+        <div class="display-inline">
+            {{ include('authors/_delete_form.html.twig') }}
+        </div>
+    </div>
 
     <table class="table">
         <tbody>
@@ -35,8 +46,4 @@
     </table>
 
     <a href="{{ path('author_index') }}">back to list</a>
-
-    <a href="{{ path('author_edit', {'id': author.id}) }}">edit</a>
-
-    {{ include('authors/_delete_form.html.twig') }}
 {% endblock %}
