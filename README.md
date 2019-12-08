@@ -38,13 +38,40 @@ de formularios. Sin embargo, la manera más limpia, según
 mi criterio, es tener separado esta configuración en un fichero
 YAML.
 
-Para ello, crearemos el siguiente fichero:
+Lo primero que tenemos que hacer es activar la funcionalidad
+de validación para el framework. Para ello, tenemos que 
+realizar algunas configuraciones en el siguiente
+fichero:
+
+```
+config/packages/validator.yml
+```
+
+y agregamos lo siguiente:
+
+``` yaml
+framework:
+    validation:
+        enabled: true
+        email_validation_mode: html5
+        mapping:
+            paths:
+                - "%kernel.project_dir%/src/Resources/config/validators/"
+```
+
+Se puede observar que en el fichero mencionado anteriormente,
+hemos agregado la propiedad "paths", en donde, estaremos creando
+los ficheros de validación para nuestras entidades que 
+serán usados en nuestros formularios.
+
+Si queremos crear validaciones para la entidad "Author",
+debemos crear primero el fichero:
 
 ```
 src/Resources/config/validators/author-validation.yml
 ```
 
-y agregaremos lo siguiente:
+y agregar lo siguiente:
 
 ``` yaml
 App\Entity\Author:
@@ -54,3 +81,6 @@ App\Entity\Author:
       - Length:
           min: 2
 ```
+
+Este es un sencillo ejemplo, en el cual, estamos especificando
+validaciones para el campo "name" de la entidad "Author"
