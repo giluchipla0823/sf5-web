@@ -8,7 +8,7 @@ $ php bin/console doctrine:mapping:import [MAPPING_PREFIX] yml --path=[MAPPING_D
 
 Ejemplo: 
 ```
-$ php bin/console doctrine:mapping:import "App\Entity" yml --path=src/Resources/doctrine
+$ php bin/console doctrine:mapping:import "App\Entity" yml --path=src/Resources/config/doctrine
 ```
 
 ## Crear entidades

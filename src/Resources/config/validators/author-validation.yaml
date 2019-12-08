@@ -1,0 +1,7 @@
+# Validations entity "Author"
+App\Entity\Author:
+  properties:
+    name:
+      - NotBlank: {}
+      - Length:
+          min: 2
